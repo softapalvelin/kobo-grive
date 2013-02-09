@@ -1,0 +1,8 @@
+PATH=$PATH:/home/[USERNAME]/CodeSourcery/Sourcery_G++_Lite/bin
+DEVICEROOT=/home/[USERNAME]/kobo/fs
+
+# Boost
+BOOST_BUILD_PATH=/home/[USERNAME]/kobo/tmp/boost_1_52_0
+
+# How to invoke cmake
+CMAKE=${CMAKE:-"cmake"}

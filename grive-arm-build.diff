@@ -1,0 +1,48 @@
+diff --git a/cmake/Modules/FindLibGcrypt.cmake b/cmake/Modules/FindLibGcrypt.cmake
+index 0e1727f..1104337 100644
+--- a/cmake/Modules/FindLibGcrypt.cmake
++++ b/cmake/Modules/FindLibGcrypt.cmake
+@@ -13,6 +13,7 @@
+ 
+ # libgcrypt is moving to pkg-config, but earlier version don't have it
+ 
++IF (NOT CMAKE_CROSSCOMPILING)
+ #search in typical paths for libgcrypt-config
+ FIND_PROGRAM(LIBGCRYPTCONFIG_EXECUTABLE NAMES libgcrypt-config)
+ 
+@@ -36,6 +37,7 @@ IF(LIBGCRYPTCONFIG_EXECUTABLE)
+   ENDIF(LIBGCRYPT_LIBRARIES AND LIBGCRYPT_CFLAGS)
+ 
+ ENDIF(LIBGCRYPTCONFIG_EXECUTABLE)
++ENDIF(NOT CMAKE_CROSSCOMPILING)
+ 
+ if (LIBGCRYPT_FOUND)
+    if (NOT LibGcrypt_FIND_QUIETLY)
+diff --git a/grive/CMakeLists.txt b/grive/CMakeLists.txt
+index d5f8ebe..c139776 100644
+--- a/grive/CMakeLists.txt
++++ b/grive/CMakeLists.txt
+@@ -4,6 +4,7 @@ find_package(Boost COMPONENTS program_options REQUIRED)
+ 
+ include_directories(
+ 	${grive_SOURCE_DIR}/../libgrive/src
++	${Boost_INCLUDE_DIR}
+ 	${OPT_INCS}
+ )
+ 
+diff --git a/libgrive/CMakeLists.txt b/libgrive/CMakeLists.txt
+index a9d6018..4cf510d 100644
+--- a/libgrive/CMakeLists.txt
++++ b/libgrive/CMakeLists.txt
+@@ -41,6 +41,11 @@ include_directories(
+ 	${libgrive_SOURCE_DIR}/src
+ 	${libgrive_SOURCE_DIR}/test
+ 	${GDBM_INCLUDE_DIR}
++	${CURL_INCLUDE_DIR}
++	${JSONC_INCLUDE_DIR}
++	${LIBGCRYPT_INCLUDE_DIR}
++	${Boost_INCLUDE_DIR}
++	${EXPAT_INCLUDE_DIR}
+ 	${OPT_INCS}
+ )
+ 
