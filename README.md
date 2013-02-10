@@ -20,3 +20,8 @@ Before building you should create some setting files to build directory. Just co
 
 The changes that I needed for building grive are in grive-arm-build.diff file. The changes are also included in the packages/grive-dev.tar.bz2.
 
+Package
+----------
+Here is a package that contains grive and its dependencies: https://www.googledrive.com/host/0B8PUwax9miFkeVQ3WURZaW9ZcFU/packages/kobo-grive/KoboRoot.tgz
+
+Curl needs root certificates so the package contains root certificates downloaded from http://curl.haxx.se/ca/cacert.pem
